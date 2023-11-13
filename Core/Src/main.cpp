@@ -94,11 +94,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  static constinit size_t DELAY_TIME = 100;
   while (1)
   {
     /* USER CODE END WHILE */
     HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-    HAL_Delay(1000);
+    HAL_Delay(DELAY_TIME);
 
     /* USER CODE BEGIN 3 */
   }
