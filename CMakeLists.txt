@@ -33,8 +33,11 @@ set(CMAKE_EXECUTABLE_SUFFIX ".elf")
 add_subdirectory(Drivers)
 
 # App
-set(PROJECT_SOURCES
-    Core/Src/main.cpp
+set(APP_SOURCES
+    app/main.cpp
+)
+
+set(SUPPORT_SOURCES
     Core/Src/stm32l4xx_hal_msp.c
     Core/Src/stm32l4xx_it.c
     Core/Src/syscalls.c
@@ -42,7 +45,7 @@ set(PROJECT_SOURCES
     Core/Src/system_stm32l4xx.c
 )
 
-add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} Core/Startup/startup_stm32l476rgtx.s)
+add_executable(${PROJECT_NAME} ${APP_SOURCES} ${SUPPORT_SOURCES} Core/Startup/startup_stm32l476rgtx.s)
 target_include_directories(${PROJECT_NAME} PRIVATE Core/Inc)
 target_link_libraries(${PROJECT_NAME} PRIVATE STM_HAL)
 
