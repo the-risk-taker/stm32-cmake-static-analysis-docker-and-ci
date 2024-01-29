@@ -1,4 +1,4 @@
-# STM32 & CMake
+# STM32 + CMake + Docker
 
 Porting project generated with STM32CubeMX to CMake. The idea is to `setup`, `build` and `flash` the program using `only three commands`. Tested on [NUCLEO-L476RG](https://www.st.com/en/evaluation-tools/nucleo-l476rg.html).
 
@@ -11,7 +11,7 @@ Good reference on how to writing CMake for cross-platform development can be fou
 - CMake
 - Ninja
 
-Tools must be in PATH.
+Tools must be in PATH. Or build ready to use Docker image from [Dockerfile](Dockerfile).
 
 ## Setup, building and programming
 
