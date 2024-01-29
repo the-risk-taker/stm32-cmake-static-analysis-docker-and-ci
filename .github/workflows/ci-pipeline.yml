@@ -1,0 +1,13 @@
+on: [push]
+jobs:
+  ci-pipeline:
+    runs-on: ubuntu-latest
+    container:
+      image: therisktaker/arm-none-eabi-13.2-and-tools:latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - name: Configure CMake
+        run: cmake -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc.cmake -DCMAKE_BUILD_TYPE=Release -S . -B build -G Ninja
+      - name: Build
+        run: ninja -C build

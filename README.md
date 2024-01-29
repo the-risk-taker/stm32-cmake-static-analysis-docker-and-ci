@@ -1,4 +1,6 @@
-# STM32 + CMake + Docker
+# STM32 + CMake + Docker + CI
+
+[![.github/workflows/ci-pipeline.yml](https://github.com/the-risk-taker/stm32-cmake-static-analysis-docker-and-ci/actions/workflows/ci-pipeline.yml/badge.svg?branch=main)](https://github.com/the-risk-taker/stm32-cmake-static-analysis-docker-and-ci/actions/workflows/ci-pipeline.yml)
 
 Porting project generated with STM32CubeMX to CMake. The idea is to `setup`, `build` and `flash` the program using `only three commands`. Tested on [NUCLEO-L476RG](https://www.st.com/en/evaluation-tools/nucleo-l476rg.html).
 
