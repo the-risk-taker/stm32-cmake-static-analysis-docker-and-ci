@@ -9,6 +9,10 @@ elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
     add_compile_options (-fcolor-diagnostics)
 endif ()
 
+# Tools
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+include(cmake/cppcheck.cmake)
+
 # Variables
 include(cmake/constants.cmake)
 

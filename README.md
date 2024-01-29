@@ -34,3 +34,11 @@ Flash the program:
 ```shell
 ninja -C build program
 ```
+
+## Static analysis
+
+Make sure that `Cppcheck 2.13.0` is installed and in PATH, then to check code with Cppcheck call:
+
+```shell
+ninja -C build cppcheck-check
+```
