@@ -26,3 +26,10 @@ RUN wget -q https://developer.arm.com/-/media/Files/downloads/gnu/${ARM_TOOLCHAI
     && rm ${ARM_TOOLCHAIN_FILE}
 
 ENV PATH=${PATH}:${TOOLS_DIRECTORY}/${ARM_TOOLCHAIN_DIRECTORY}/bin
+
+# cppcheck
+ARG CPPCHECK_VERSION=2.13.0
+RUN git clone https://github.com/danmar/cppcheck.git && cd cppcheck && git checkout 2.13.0 \
+    && cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DUSE_MATCHCOMPILER=ON -G Ninja \
+    && cmake --build build && cmake --install build \
+    && cd .. && rm -rf cppcheck 
