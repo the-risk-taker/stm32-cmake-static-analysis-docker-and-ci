@@ -1,4 +1,6 @@
-add_library(STM_HAL
+add_library(HAL STATIC)
+add_library(STM32::HAL ALIAS HAL)
+target_sources(HAL PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c
     ${CMAKE_CURRENT_SOURCE_DIR}/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c
     ${CMAKE_CURRENT_SOURCE_DIR}/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c
@@ -17,9 +19,7 @@ add_library(STM_HAL
     ${CMAKE_CURRENT_SOURCE_DIR}/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart.c
     ${CMAKE_CURRENT_SOURCE_DIR}/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c
 )
-
-target_compile_definitions(STM_HAL PRIVATE USE_HAL_DRIVER=1)
-target_include_directories(STM_HAL PUBLIC
+target_include_directories(HAL PUBLIC
     # HAL
     ${CMAKE_SOURCE_DIR}/Core/Inc/
     ${CMAKE_CURRENT_SOURCE_DIR}/STM32L4xx_HAL_Driver/Inc
@@ -28,4 +28,4 @@ target_include_directories(STM_HAL PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/CMSIS/Device/ST/STM32L4xx/Include
     ${CMAKE_CURRENT_SOURCE_DIR}/CMSIS/Include
 )
-
+target_compile_definitions(HAL PRIVATE USE_HAL_DRIVER=1)
