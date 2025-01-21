@@ -1,23 +1,28 @@
 # STM32 + CMake + Docker + CI
 
-[![.github/workflows/ci-pipeline.yml](https://github.com/the-risk-taker/stm32-cmake-static-analysis-docker-and-ci/actions/workflows/ci-pipeline.yml/badge.svg?branch=main)](https://github.com/the-risk-taker/stm32-cmake-static-analysis-docker-and-ci/actions/workflows/ci-pipeline.yml)
+[![CI Pipeline Status](https://github.com/the-risk-taker/stm32-cmake-static-analysis-docker-and-ci/actions/workflows/ci-pipeline.yml/badge.svg?branch=main)](https://github.com/the-risk-taker/stm32-cmake-static-analysis-docker-and-ci/actions/workflows/ci-pipeline.yml)
 
-Porting project generated with STM32CubeMX to CMake. The idea is to `setup`, `build` and `flash` the program using `only three commands`. Tested on [NUCLEO-L476RG](https://www.st.com/en/evaluation-tools/nucleo-l476rg.html).
+Template project demonstrating how to use CMake with STM32CubeMX-generated code. Build and flash your STM32 project with just three commands. Includes Docker support and GitHub Actions CI pipeline.
 
-Good reference on how to writing CMake for cross-platform development can be found [here](https://stackoverflow.com/a/43836115).
+## Prerequisites
 
-## Requirements
+### Local Development
+
+Required tools (must be in PATH):
 
 - [Arm GNU Toolchain](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads)
 - [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html)
-- CMake
+- CMake 3.x
 - Ninja
 
-Tools must be in PATH. Or build ready to use Docker image from [Dockerfile](Dockerfile).
+### Docker Development
 
-## Setup, building and programming
+> [!TIP]
+> Use pre-built Docker image: [therisktaker/arm-none-eabi-14.2-and-tools](https://hub.docker.com/repository/docker/therisktaker/arm-none-eabi-14.2-and-tools/general).
 
-Setup project by calling:
+## Quick Start
+
+Configure project:
 
 ```shell
 cmake -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc.cmake -DCMAKE_BUILD_TYPE=Release -S . -B build -G Ninja
@@ -29,16 +34,21 @@ Build project:
 ninja -C build
 ```
 
-Flash the program:
+Flash to device:
 
 ```shell
 ninja -C build program
 ```
 
-## Static analysis
+## Static Analysis
 
-Make sure that `Cppcheck 2.13.0` is installed and in PATH, then to check code with Cppcheck call:
+Run Cppcheck (must be in PATH):
 
 ```shell
 ninja -C build cppcheck-check
 ```
+
+## References
+
+- [CMake Cross-Platform Guide](https://stackoverflow.com/a/43836115)
+- [NUCLEO-L476RG Documentation](https://www.st.com/en/evaluation-tools/nucleo-l476rg.html)
